@@ -1,0 +1,11 @@
+name: gaellverse
+services:
+  game:
+    build: ./game
+    ports:
+      - "127.0.0.1:${GAELLVERSE_PORT:-5173}:80"
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://127.0.0.1/"]
+      interval: 3s
+      timeout: 2s
+      retries: 10

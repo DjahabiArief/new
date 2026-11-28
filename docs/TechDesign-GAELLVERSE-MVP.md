@@ -27,9 +27,9 @@ Gunakan kamera ortografis atas-miring dengan arah tetap. Bingkai awal harus memu
 4. Ketika Groot dapat disapa, sorot halus sasarannya. Tampilkan **“Sapa Groot”** pada HP dan **“E · Sapa Groot”** di desktop. Sentuhan, klik, dan tombol E memicu tindakan yang sama.
 5. Saat disapa, Groot memutar kepala ke arah Gaellry dan memberi satu respons singkat. Tujuan menunjukkan sapaan selesai. Abaikan input berulang selama animasi aktif. Setelah itu sapaan dapat diulang, dan tombol menghilang ketika Gaellry menjauh.
 
-## Menjalankan preview setelah implementasi
+## Menjalankan preview dengan PowerShell dan Docker Desktop
 
-Usulan lokasi kode adalah `game/` agar perintah game terpisah dari alat workflow di repo. Dari folder itu, jalankan `npm ci`, lalu `npm run dev` dan buka alamat lokal yang ditampilkan. Untuk uji HP, jalankan `npm run dev -- --host 0.0.0.0` pada jaringan lokal tepercaya dan buka alamat jaringan yang ditampilkan dari HP pada Wi-Fi yang sama. Periksa hasil distribusi melalui `npm run build` dan `npm run preview`. Perintah ini adalah spesifikasi bagi implementasi yang akan dibuat.
+Dari folder repo di Windows PowerShell, jalankan `powershell -NoProfile -ExecutionPolicy Bypass -File .\start.ps1` setelah Docker Desktop siap. Docker membangun aplikasi dari `game/` dan menyajikan hasilnya di `http://localhost:5173`. Skrip menunggu layanan sehat sebelum membuka browser. Gunakan `-Port 5180` jika port pertama dipakai. Setelah mengubah kode, jalankan ulang skrip. Hentikan melalui `docker compose down` dari folder repo. Konfigurasi bawaan hanya mendengarkan pada loopback komputer. Unduhan awal memerlukan internet.
 
 ## Pemeriksaan penerimaan
 
