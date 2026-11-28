@@ -1,3 +1,24 @@
 <!doctype html>
-<html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>GAELLVERSE · Halaman rumah</title><link rel="stylesheet" href="/style.css"></head>
-<body><main id="world" aria-label="Halaman rumah Gaellry"></main><aside><small>GAELLVERSE</small><strong id="goal" role="status">Hampiri Groot</strong></aside><div id="pad" aria-label="Joystick gerak"><i></i></div><button id="action" hidden>Sapa Groot</button><script type="module" src="/src.ts"></script></body></html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+    <meta name="theme-color" content="#393c30" />
+    <title>GAELLVERSE · Halaman rumah</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <main id="world" aria-label="Halaman rumah Gaellry"></main>
+    <aside class="journal" aria-label="Tujuan prolog">
+      <div class="chapter">GAELLVERSE <span>／</span> PROLOG</div>
+      <strong id="goal" role="status">Hampiri Groot</strong>
+    </aside>
+    <div id="marker" aria-hidden="true" hidden>Groot</div>
+    <div class="controls">
+      <span><kbd>WASD</kbd> / <kbd>↑↓←→</kbd> Berjalan</span>
+    </div>
+    <div id="pad" aria-label="Joystick gerak"><i></i></div>
+    <button id="action" type="button" hidden><kbd>E</kbd><span>Sapa Groot</span></button>
+    <script type="module" src="/src.ts"></script>
+  </body>
+</html>

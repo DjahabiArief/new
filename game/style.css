@@ -1,1 +1,184 @@
-*{box-sizing:border-box}body{margin:0;overflow:hidden;background:#ebe1c6;color:#362a21;font:16px system-ui}canvas{display:block;width:100vw;height:100dvh}aside{position:fixed;top:max(18px,env(safe-area-inset-top));left:18px;display:grid;gap:4px;background:#fff4dfee;border:1px solid #b49b77;padding:12px 20px;border-radius:12px;pointer-events:none}small{font:12px Georgia,serif;letter-spacing:.13em}#pad,button{position:fixed;bottom:max(25px,env(safe-area-inset-bottom));touch-action:none;user-select:none}#pad{left:20px;width:96px;height:96px;background:#47392877;border:2px solid #ffefd4bb;border-radius:50%;display:grid;place-items:center}i{width:40px;height:40px;background:#fff4d9cc;border-radius:100%;pointer-events:none}button{right:20px;padding:16px 22px;color:#fff7e4;background:#70442d;border:2px solid #ffebc3;border-radius:32px;font:600 16px system-ui}@media(pointer:fine){#pad{opacity:.65}}
+* {
+  box-sizing: border-box;
+}
+:root {
+  color-scheme: light;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  color: #fff5de;
+  --ink: #242c25;
+  --gold: #e5c693;
+  --edge: clamp(14px, 2.5vw, 42px);
+}
+body {
+  margin: 0;
+  overflow: hidden;
+  background: #d6cdb4;
+}
+#world {
+  height: 100dvh;
+  touch-action: none;
+}
+canvas {
+  display: block;
+}
+.journal,
+.controls,
+button,
+#marker,
+#pad {
+  position: fixed;
+}
+.journal {
+  top: max(var(--edge), env(safe-area-inset-top));
+  left: max(var(--edge), env(safe-area-inset-left));
+  padding: 13px 21px 15px 18px;
+  background: linear-gradient(110deg, #29312bf7, #333a30ed);
+  border: 1px solid #a69874;
+  border-left: 3px solid #e6c992;
+  border-radius: 3px 12px 12px 3px;
+  box-shadow: 0 4px 15px #23271b31;
+  pointer-events: none;
+}
+.chapter {
+  font-size: 10px;
+  font-weight: 650;
+  letter-spacing: 0.17em;
+  color: #efdbb6;
+  line-height: 1.4;
+}
+.chapter span {
+  padding: 0 4px;
+  color: #b5a27f;
+}
+#goal {
+  display: block;
+  margin-top: 4px;
+  font:
+    500 clamp(19px, 2vw, 25px) / 1.2 Georgia,
+    serif;
+}
+#marker {
+  left: 0;
+  top: 0;
+  background: #30382ff2;
+  color: #fff1d7;
+  font: 600 13px/1 system-ui;
+  letter-spacing: 0.025em;
+  padding: 6px 11px;
+  border: 1px solid #d6bd92;
+  border-radius: 20px;
+  pointer-events: none;
+  box-shadow: 0 2px 5px #28291e40;
+}
+#marker::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: calc(50% - 3px);
+  width: 6px;
+  height: 6px;
+  transform: rotate(45deg);
+  background: #343b32;
+  border: solid #d6bd92;
+  border-width: 0 1px 1px 0;
+}
+.controls,
+button,
+#pad {
+  bottom: max(var(--edge), env(safe-area-inset-bottom));
+}
+.controls {
+  left: var(--edge);
+  background: #252f29e8;
+  padding: 8px 13px;
+  border-radius: 6px;
+  font-size: 13px;
+  pointer-events: none;
+}
+kbd {
+  font: 650 12px/1.2 system-ui;
+  letter-spacing: 0.035em;
+  border: 1px solid #c1b594;
+  border-bottom-width: 2px;
+  border-radius: 4px;
+  padding: 2px 5px;
+}
+.controls kbd:last-child {
+  margin-right: 6px;
+}
+button {
+  right: max(var(--edge), env(safe-area-inset-right));
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 17px;
+  border: 1px solid #93744c;
+  outline: 2px solid #fff1ce;
+  outline-offset: -4px;
+  border-radius: 8px;
+  background: #f6e6c6;
+  color: #312b23;
+  box-shadow: 0 3px 12px #2c281b42;
+  font: 650 16px/1.25 system-ui;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+button:focus-visible {
+  outline: 3px solid #172b40;
+  outline-offset: 2px;
+}
+button:disabled {
+  cursor: default;
+}
+#pad {
+  display: none;
+  left: max(var(--edge), env(safe-area-inset-left));
+  width: 86px;
+  height: 86px;
+  border-radius: 50%;
+  background: #3940348f;
+  border: 2px solid #f4e7c7cc;
+  align-items: center;
+  justify-content: center;
+  touch-action: none;
+  user-select: none;
+}
+#pad i {
+  width: 35px;
+  height: 35px;
+  border: 1px solid #ffefd0;
+  border-radius: 50%;
+  background: #efe2c4db;
+  pointer-events: none;
+}
+@media (pointer: coarse), (any-pointer: coarse) {
+  #pad {
+    display: flex;
+  }
+  .controls,
+  button kbd {
+    display: none;
+  }
+}
+@media (max-height: 490px) {
+  .journal {
+    padding: 7px 13px;
+  }
+  #pad {
+    width: 73px;
+    height: 73px;
+  }
+}
+[hidden] {
+  display: none !important;
+}
+#marker.near {
+  background: #f6e6c6;
+  border-color: #66583f;
+  color: #302d24;
+}
+#marker.near::after {
+  background: #f6e6c6;
+  border-color: #66583f;
+}
